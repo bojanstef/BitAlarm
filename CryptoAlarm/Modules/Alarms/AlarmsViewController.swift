@@ -74,22 +74,9 @@ fileprivate extension AlarmsViewController {
         presenter.showAddAlarmController()
     }
 
-    @objc func editAlarms() {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: .doneEditingAlarms)
-        navigationItem.setLeftBarButton(barButtonItem, animated: true)
-        tableView.setEditing(true, animated: true)
-    }
-
-    @objc func doneEditingAlarms() {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: .editAlarms)
-        navigationItem.setLeftBarButton(barButtonItem, animated: true)
-        tableView.setEditing(false, animated: true)
-    }
-
     func setupNavbar() {
         navigationItem.title = presenter.navbarTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: .addAlarm)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: .editAlarms)
     }
 
     func setupTableView() {
@@ -101,6 +88,4 @@ fileprivate extension AlarmsViewController {
 
 fileprivate extension Selector {
     static let addAlarm = #selector(AlarmsViewController.addAlarm)
-    static let editAlarms = #selector(AlarmsViewController.editAlarms)
-    static let doneEditingAlarms = #selector(AlarmsViewController.doneEditingAlarms)
 }
