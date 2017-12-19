@@ -8,4 +8,7 @@
 
 import Foundation
 
-protocol AddAlarmDataServiceable {}
+protocol AddAlarmDataServiceable {
+    func getCryptocoins() throws -> [Cryptocoin]
+    func saveAlarm(_ alarm: Alarm) throws 
+}

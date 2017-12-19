@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAlarmViewController" customModule="CryptoAlarm" customModuleProvider="target">
             <connections>
+                <outlet property="comparingControl" destination="P34-gI-NBQ" id="KUT-N5-Z1Y"/>
+                <outlet property="dollarValueTextField" destination="iXT-Qr-FHn" id="oJs-RJ-Q9L"/>
+                <outlet property="tableView" destination="KjL-ps-qWR" id="eku-qK-SLI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,39 +23,38 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Coin name or Symbol" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sKD-Cb-ayj">
-                    <rect key="frame" x="0.0" y="20" width="375" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="Iks-Fc-fB3"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c0B-DG-VTM">
-                    <rect key="frame" x="93" y="164" width="189" height="29"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P34-gI-NBQ" customClass="ComparingControl" customModule="CryptoAlarm" customModuleProvider="target">
+                    <rect key="frame" x="93" y="292" width="189" height="29"/>
                     <segments>
                         <segment title="Less Than"/>
                         <segment title="Greater Than"/>
                     </segments>
                 </segmentedControl>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USD Dollar Value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXT-Qr-FHn">
-                    <rect key="frame" x="16" y="208" width="343" height="30"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KjL-ps-qWR">
+                    <rect key="frame" x="0.0" y="20" width="375" height="256"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="256" id="YNc-7b-Ayu"/>
+                    </constraints>
+                </tableView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="iXT-Qr-FHn">
+                    <rect key="frame" x="32" y="336" width="311" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <textInputTraits key="textInputTraits"/>
                 </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sKD-Cb-ayj" secondAttribute="trailing" id="2qp-Zw-MU4"/>
-                <constraint firstItem="iXT-Qr-FHn" firstAttribute="top" secondItem="c0B-DG-VTM" secondAttribute="bottom" constant="16" id="DDk-Xo-0Zi"/>
-                <constraint firstItem="sKD-Cb-ayj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FDQ-9y-Ii1"/>
-                <constraint firstItem="iXT-Qr-FHn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="PzJ-be-cNg"/>
-                <constraint firstItem="c0B-DG-VTM" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="QG1-rJ-74c"/>
-                <constraint firstItem="c0B-DG-VTM" firstAttribute="top" secondItem="sKD-Cb-ayj" secondAttribute="bottom" constant="16" id="jTb-ly-KTY"/>
-                <constraint firstItem="sKD-Cb-ayj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jde-It-jIO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iXT-Qr-FHn" secondAttribute="trailing" constant="16" id="oxm-fW-adu"/>
+                <constraint firstItem="P34-gI-NBQ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="0pF-7i-sbV"/>
+                <constraint firstItem="iXT-Qr-FHn" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="9kN-ay-6Ky"/>
+                <constraint firstItem="iXT-Qr-FHn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="Ayy-gD-irM"/>
+                <constraint firstItem="KjL-ps-qWR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WkS-VE-4GC"/>
+                <constraint firstItem="P34-gI-NBQ" firstAttribute="top" secondItem="KjL-ps-qWR" secondAttribute="bottom" constant="16" id="X8g-bg-igo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KjL-ps-qWR" secondAttribute="trailing" id="bgj-yL-sCB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iXT-Qr-FHn" secondAttribute="trailing" constant="32" id="fCd-NC-0rB"/>
+                <constraint firstItem="KjL-ps-qWR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qVh-OT-k19"/>
+                <constraint firstItem="iXT-Qr-FHn" firstAttribute="top" secondItem="P34-gI-NBQ" secondAttribute="bottom" constant="16" id="zxF-z6-aei"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

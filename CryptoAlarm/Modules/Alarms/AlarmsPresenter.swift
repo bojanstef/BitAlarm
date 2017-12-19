@@ -11,6 +11,7 @@ import Foundation
 protocol AlarmsPresentable {
     var navbarTitle: String { get }
     func showAddAlarmController()
+    func getAlarms() throws -> [Alarm]
 }
 
 final class AlarmsPresenter {
@@ -28,5 +29,9 @@ extension AlarmsPresenter: AlarmsPresentable {
 
     func showAddAlarmController() {
         interactor.showAddAlarmController()
+    }
+
+    func getAlarms() throws -> [Alarm] {
+        return try interactor.getAlarms()
     }
 }

@@ -8,7 +8,10 @@
 
 import Foundation
 
-protocol AddAlarmInteractable {}
+protocol AddAlarmInteractable {
+    func getCryptocoins() throws -> [Cryptocoin]
+    func saveAlarm(_ alarm: Alarm) throws
+}
 
 final class AddAlarmInteractor {
     fileprivate weak var moduleDelegate: AddAlarmModuleDelegate?
@@ -20,4 +23,12 @@ final class AddAlarmInteractor {
     }
 }
 
-extension AddAlarmInteractor: AddAlarmInteractable {}
+extension AddAlarmInteractor: AddAlarmInteractable {
+    func getCryptocoins() throws -> [Cryptocoin] {
+        return try dataService.getCryptocoins()
+    }
+
+    func saveAlarm(_ alarm: Alarm) throws {
+        try dataService.saveAlarm(alarm)
+    }
+}

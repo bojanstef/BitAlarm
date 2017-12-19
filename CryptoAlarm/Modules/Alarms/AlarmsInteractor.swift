@@ -10,6 +10,7 @@ import Foundation
 
 protocol AlarmsInteractable {
     func showAddAlarmController()
+    func getAlarms() throws -> [Alarm]
 }
 
 final class AlarmsInteractor {
@@ -25,5 +26,9 @@ final class AlarmsInteractor {
 extension AlarmsInteractor: AlarmsInteractable {
     func showAddAlarmController() {
         moduleDelegate?.showAddAlarmController()
+    }
+
+    func getAlarms() throws -> [Alarm] {
+        return try dataService.getAlarms()
     }
 }

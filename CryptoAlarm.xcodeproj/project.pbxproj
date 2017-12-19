@@ -15,6 +15,13 @@
 		F153B1CB1FE5109F00A8B295 /* AddAlarmWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1C51FE5109F00A8B295 /* AddAlarmWireframe.swift */; };
 		F153B1CE1FE51EB600A8B295 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1CC1FE51EB600A8B295 /* AlarmCell.swift */; };
 		F153B1CF1FE51EB600A8B295 /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F153B1CD1FE51EB600A8B295 /* AlarmCell.xib */; };
+		F153B1D11FE5CA0D00A8B295 /* ComparingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1D01FE5CA0D00A8B295 /* ComparingControl.swift */; };
+		F153B1DB1FE5E5F100A8B295 /* Cryptocoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DA1FE5E5F100A8B295 /* Cryptocoin.swift */; };
+		F153B1DD1FE73E0500A8B295 /* FirstLaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */; };
+		F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */; };
+		F153B1E21FE747BD00A8B295 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1E11FE747BD00A8B295 /* CacheService.swift */; };
+		F1605EBC1FE8356E00F411DD /* CryptocoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */; };
+		F1605EBD1FE8356E00F411DD /* CryptocoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */; };
 		F17801DA1FE228BB00DE8BAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17801D91FE228BB00DE8BAB /* AppDelegate.swift */; };
 		F17801E11FE228BB00DE8BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17801E01FE228BB00DE8BAB /* Assets.xcassets */; };
 		F1A6F61D1FE4675600DEA6D7 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6F61C1FE4675600DEA6D7 /* RootCoordinator.swift */; };
@@ -40,6 +47,13 @@
 		F153B1C51FE5109F00A8B295 /* AddAlarmWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmWireframe.swift; sourceTree = "<group>"; };
 		F153B1CC1FE51EB600A8B295 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		F153B1CD1FE51EB600A8B295 /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
+		F153B1D01FE5CA0D00A8B295 /* ComparingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparingControl.swift; sourceTree = "<group>"; };
+		F153B1DA1FE5E5F100A8B295 /* Cryptocoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocoin.swift; sourceTree = "<group>"; };
+		F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchService.swift; sourceTree = "<group>"; };
+		F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		F153B1E11FE747BD00A8B295 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinCell.swift; sourceTree = "<group>"; };
+		F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptocoinCell.xib; sourceTree = "<group>"; };
 		F17801D61FE228BB00DE8BAB /* CryptoAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17801D91FE228BB00DE8BAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17801E01FE228BB00DE8BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +96,14 @@
 			path = AddAlarm;
 			sourceTree = "<group>";
 		};
+		F153B1DE1FE745AB00A8B295 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F17801CD1FE228BA00DE8BAB = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +128,7 @@
 				F17801E01FE228BB00DE8BAB /* Assets.xcassets */,
 				F1A6F6211FE4715100DEA6D7 /* Base.lproj */,
 				F1A6F61A1FE4672000DEA6D7 /* Coordinators */,
+				F153B1DE1FE745AB00A8B295 /* Extensions */,
 				F1A6F6401FE4812900DEA6D7 /* Models */,
 				F1A6F6281FE471C600DEA6D7 /* Modules */,
 				F1A6F61E1FE4676500DEA6D7 /* Protocols */,
@@ -165,7 +188,9 @@
 		F1A6F6381FE4727A00DEA6D7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F153B1E11FE747BD00A8B295 /* CacheService.swift */,
 				F1A6F6391FE4729200DEA6D7 /* DataService.swift */,
+				F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -175,6 +200,9 @@
 			children = (
 				F153B1CC1FE51EB600A8B295 /* AlarmCell.swift */,
 				F153B1CD1FE51EB600A8B295 /* AlarmCell.xib */,
+				F153B1D01FE5CA0D00A8B295 /* ComparingControl.swift */,
+				F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */,
+				F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				F1A6F6411FE4814500DEA6D7 /* Alarm.swift */,
+				F153B1DA1FE5E5F100A8B295 /* Cryptocoin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -252,6 +281,7 @@
 				F17801E11FE228BB00DE8BAB /* Assets.xcassets in Resources */,
 				F153B1CF1FE51EB600A8B295 /* AlarmCell.xib in Resources */,
 				F1A6F6261FE4716000DEA6D7 /* LaunchScreen.storyboard in Resources */,
+				F1605EBD1FE8356E00F411DD /* CryptocoinCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,14 +299,20 @@
 				F1A6F6371FE4726200DEA6D7 /* AlarmsWireframe.swift in Sources */,
 				F1A6F6331FE4726200DEA6D7 /* AlarmsInteractor.swift in Sources */,
 				F153B1C71FE5109F00A8B295 /* AddAlarmInteractor.swift in Sources */,
+				F153B1DB1FE5E5F100A8B295 /* Cryptocoin.swift in Sources */,
 				F153B1C61FE5109F00A8B295 /* AddAlarmDataServiceable.swift in Sources */,
 				F153B1CE1FE51EB600A8B295 /* AlarmCell.swift in Sources */,
 				F1A6F6351FE4726200DEA6D7 /* AlarmsViewController.swift in Sources */,
+				F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */,
+				F153B1D11FE5CA0D00A8B295 /* ComparingControl.swift in Sources */,
 				F153B1CB1FE5109F00A8B295 /* AddAlarmWireframe.swift in Sources */,
 				F1A6F61D1FE4675600DEA6D7 /* RootCoordinator.swift in Sources */,
 				F1A6F6341FE4726200DEA6D7 /* AlarmsPresenter.swift in Sources */,
 				F153B1C91FE5109F00A8B295 /* AddAlarmViewController.swift in Sources */,
+				F153B1DD1FE73E0500A8B295 /* FirstLaunchService.swift in Sources */,
 				F17801DA1FE228BB00DE8BAB /* AppDelegate.swift in Sources */,
+				F1605EBC1FE8356E00F411DD /* CryptocoinCell.swift in Sources */,
+				F153B1E21FE747BD00A8B295 /* CacheService.swift in Sources */,
 				F1A6F6421FE4814500DEA6D7 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

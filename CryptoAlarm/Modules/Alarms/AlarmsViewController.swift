@@ -27,15 +27,9 @@ final class AlarmsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        alarms = [
-            Alarm(isOn: true, symbol: "BTC", parameter: .greaterThan, price: 123_000_000),
-            Alarm(isOn: true, symbol: "XRP", parameter: .greaterThan, price: 0.44),
-            Alarm(isOn: false, symbol: "BCC", parameter: .greaterThan, price: 123.040_0134_024),
-            Alarm(isOn: true, symbol: "BTG", parameter: .lessThan, price: 400),
-            Alarm(isOn: true, symbol: "ETH", parameter: .greaterThan, price: 0.44)
-        ]
         setupNavbar()
         setupTableView()
+        populateTableView()
     }
 }
 
@@ -83,6 +77,15 @@ fileprivate extension AlarmsViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+    }
+
+    func populateTableView() {
+        do {
+            alarms = try presenter.getAlarms()
+            tableView.reloadData()
+        } catch {
+            print(#function, error)
+        }
     }
 }
 

@@ -10,6 +10,11 @@ import Foundation
 
 protocol AddAlarmPresentable {
     var navbarTitle: String { get }
+    var currencySymbol: String { get }
+    var currencyCode: String { get }
+    var bitcoin: Cryptocoin { get }
+    func getCryptocoins() throws -> [Cryptocoin]
+    func saveAlarm(_ alarm: Alarm) throws
 }
 
 final class AddAlarmPresenter {
@@ -23,5 +28,25 @@ final class AddAlarmPresenter {
 extension AddAlarmPresenter: AddAlarmPresentable {
     var navbarTitle: String {
         return "Add Alarm"
+    }
+
+    var currencySymbol: String {
+        return "$"
+    }
+
+    var currencyCode: String {
+        return "USD"
+    }
+
+    var bitcoin: Cryptocoin {
+        return Cryptocoin(id: "bitcoin", name: "Bitcoin", symbol: "BTC", marketCapUSD: "+inf")
+    }
+
+    func getCryptocoins() throws -> [Cryptocoin] {
+        return try interactor.getCryptocoins()
+    }
+
+    func saveAlarm(_ alarm: Alarm) throws {
+        try interactor.saveAlarm(alarm)
     }
 }

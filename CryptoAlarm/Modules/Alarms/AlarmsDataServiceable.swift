@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol AlarmsDataServiceable {}
+protocol AlarmsDataServiceable {
+    func getAlarms() throws -> [Alarm]
+}
