@@ -14,6 +14,8 @@ enum Cachefilenames: String {
 }
 
 protocol CacheServiceable {
+    func saveAlarm(_ alarm: Alarm) throws
+    func deleteAlarm(_ alarmToRemove: Alarm) throws
     func saveObject(_ object: Any, in filename: Cachefilenames) throws
     func getObject(_ filename: Cachefilenames) throws -> Any?
 }
@@ -24,6 +26,19 @@ final class CacheService {
 }
 
 extension CacheService: CacheServiceable {
+    func saveAlarm(_ alarm: Alarm) throws {
+        let alarms = try getObject(.alarms) as? [Alarm] ?? []
+        try saveObject(alarms + [alarm], in: .alarms)
+    }
+
+    func deleteAlarm(_ alarmToRemove: Alarm) throws {
+        guard let alarms = try getObject(.alarms) as? [Alarm] else {
+            throw NSError(domain: #function, code: 1080, userInfo: nil)
+        }
+        let updatedAlarms = alarms.filter { $0 != alarmToRemove }
+        try saveObject(updatedAlarms, in: .alarms)
+    }
+
     func saveObject(_ object: Any, in filename: Cachefilenames) throws {
         let file = try getFile(filename).path
         if !NSKeyedArchiver.archiveRootObject(object, toFile: file) {

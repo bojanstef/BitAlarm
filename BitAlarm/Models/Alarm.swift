@@ -33,6 +33,14 @@ final class Alarm: NSObject, NSCoding, Codable {
         self.price = price
     }
 
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? Alarm else { return false }
+        return isOn == object.isOn
+            && cryptocoin == object.cryptocoin
+            && parameter == object.parameter
+            && price == object.price
+    }
+
     // MARK: - NSCoding Protocol Methods.
 
     required convenience init?(coder aDecoder: NSCoder) {

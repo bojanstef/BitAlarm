@@ -45,6 +45,10 @@ extension DataService: AlarmsDataServiceable {
 
         return alarms
     }
+
+    func deleteAlarm(_ alarm: Alarm) throws {
+        try cacheService.deleteAlarm(alarm)
+    }
 }
 
 extension DataService: AddAlarmDataServiceable {
@@ -57,7 +61,6 @@ extension DataService: AddAlarmDataServiceable {
     }
 
     func saveAlarm(_ alarm: Alarm) throws {
-        let alarms = [alarm] // TODO: - Remove
-        try cacheService.saveObject(alarms, in: .alarms)
+        try cacheService.saveAlarm(alarm)
     }
 }

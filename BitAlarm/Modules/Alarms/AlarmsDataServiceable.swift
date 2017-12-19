@@ -10,4 +10,5 @@ import Foundation
 
 protocol AlarmsDataServiceable {
     func getAlarms() throws -> [Alarm]
+    func deleteAlarm(_ alarm: Alarm) throws
 }

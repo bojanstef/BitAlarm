@@ -28,6 +28,14 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
         self.marketCapUSD = marketCapUSD
     }
 
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? Cryptocoin else { return false }
+        return id == object.id
+            && name == object.name
+            && symbol == object.symbol
+            && marketCapUSD == object.marketCapUSD
+    }
+
     // MARK: - NSCoding Protocol Methods.
 
     required convenience init?(coder aDecoder: NSCoder) {

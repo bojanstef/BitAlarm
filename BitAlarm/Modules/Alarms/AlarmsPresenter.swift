@@ -12,6 +12,7 @@ protocol AlarmsPresentable {
     var navbarTitle: String { get }
     func showAddAlarmController()
     func getAlarms() throws -> [Alarm]
+    func deleteAlarm(_ alarm: Alarm) throws
 }
 
 final class AlarmsPresenter {
@@ -33,5 +34,9 @@ extension AlarmsPresenter: AlarmsPresentable {
 
     func getAlarms() throws -> [Alarm] {
         return try interactor.getAlarms()
+    }
+
+    func deleteAlarm(_ alarm: Alarm) throws {
+        try interactor.deleteAlarm(alarm)
     }
 }

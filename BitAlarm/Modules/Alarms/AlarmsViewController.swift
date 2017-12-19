@@ -57,8 +57,13 @@ extension AlarmsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            alarms.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            do {
+                try presenter.deleteAlarm(alarms[indexPath.row])
+                alarms.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            } catch {
+                print(error)
+            }
         }
     }
 }
