@@ -143,24 +143,25 @@ fileprivate extension AddAlarmViewController {
         let height = dollarValueTextField.frame.height
         let frame = CGRect(x: 0, y: 0, width: height * 2, height: height)
 
-        let symboLabel = UILabel(frame: frame)
-        symboLabel.text = presenter.currencySymbol
-        symboLabel.textAlignment = .center
-        symboLabel.textColor = .lightGray
-        symboLabel.font = .systemFont(ofSize: 14)
+        let symbolLabel = newLabel(frame: frame, text: presenter.currencySymbol)
         dollarValueTextField.leftViewMode = .always
-        dollarValueTextField.leftView = symboLabel
+        dollarValueTextField.leftView = symbolLabel
 
-        let currencyLabel = UILabel(frame: frame)
-        currencyLabel.text = presenter.currencyCode
-        currencyLabel.textAlignment = .center
-        currencyLabel.textColor = .lightGray
-        currencyLabel.font = .systemFont(ofSize: 14)
+        let currencyLabel = newLabel(frame: frame, text: presenter.currencyCode)
         dollarValueTextField.rightViewMode = .always
         dollarValueTextField.rightView = currencyLabel
 
         dollarValueTextField.keyboardType = .decimalPad
         dollarValueTextField.delegate = self
+    }
+
+    func newLabel(frame: CGRect, text: String) -> UILabel {
+        let label = UILabel(frame: frame)
+        label.text = text
+        label.textAlignment = .center
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 14)
+        return label
     }
 }
 
