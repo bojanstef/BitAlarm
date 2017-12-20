@@ -13,18 +13,21 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
         case uid = "id"
         case name
         case symbol
+        case value = "price_usd"
         case marketCapUSD = "market_cap_usd"
     }
 
     let uid: String
     let name: String
     let symbol: String
+    let value: String
     let marketCapUSD: String
 
-    init(uid: String, name: String, symbol: String, marketCapUSD: String) {
+    init(uid: String, name: String, symbol: String, value: String, marketCapUSD: String) {
         self.uid = uid
         self.name = name
         self.symbol = symbol
+        self.value = value
         self.marketCapUSD = marketCapUSD
     }
 
@@ -33,6 +36,7 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
         return uid == object.uid
             && name == object.name
             && symbol == object.symbol
+            && value == object.value
             && marketCapUSD == object.marketCapUSD
     }
 
@@ -42,16 +46,18 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
         guard let uid = aDecoder.decodeObject(forKey: CodingKeys.uid.stringValue) as? String,
             let name = aDecoder.decodeObject(forKey: CodingKeys.name.stringValue) as? String,
             let symbol = aDecoder.decodeObject(forKey: CodingKeys.symbol.stringValue) as? String,
+            let value = aDecoder.decodeObject(forKey: CodingKeys.value.stringValue) as? String,
             let marketCapUSD = aDecoder.decodeObject(forKey: CodingKeys.marketCapUSD.stringValue) as? String
         else { print(#function); return nil }
 
-        self.init(uid: uid, name: name, symbol: symbol, marketCapUSD: marketCapUSD)
+        self.init(uid: uid, name: name, symbol: symbol, value: value, marketCapUSD: marketCapUSD)
     }
 
     func encode(with aCoder: NSCoder) {
         aCoder.encode(uid, forKey: CodingKeys.uid.stringValue)
         aCoder.encode(name, forKey: CodingKeys.name.stringValue)
         aCoder.encode(symbol, forKey: CodingKeys.symbol.stringValue)
+        aCoder.encode(value, forKey: CodingKeys.value.stringValue)
         aCoder.encode(marketCapUSD, forKey: CodingKeys.marketCapUSD.stringValue)
     }
 }
