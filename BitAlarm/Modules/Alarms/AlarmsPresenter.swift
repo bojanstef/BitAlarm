@@ -10,6 +10,7 @@ import Foundation
 
 protocol AlarmsPresentable {
     var navbarTitle: String { get }
+    var dataDescription: String { get }
     func showAddAlarmController()
     func getAlarms() throws -> [Alarm]
     func deleteAlarm(_ alarm: Alarm) throws
@@ -27,6 +28,10 @@ final class AlarmsPresenter {
 extension AlarmsPresenter: AlarmsPresentable {
     var navbarTitle: String {
         return (Bundle.main.object(forInfoDictionaryKey: String(kCFBundleNameKey)) as? String) ?? "BitAlarm"
+    }
+
+    var dataDescription: String {
+        return "All data is from coinmarketcap.com"
     }
 
     func showAddAlarmController() {

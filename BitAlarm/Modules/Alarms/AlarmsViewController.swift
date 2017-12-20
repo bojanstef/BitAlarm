@@ -42,7 +42,7 @@ extension AlarmsViewController: UITableViewDelegate {
         let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 20)
         let label = UILabel(frame: frame)
         label.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-        label.attributedText = NSAttributedString(string: "Learn about Bitcoin at readCryptoNews.com", attributes: [
+        label.attributedText = NSAttributedString(string: presenter.dataDescription, attributes: [
             .font: UIFont.systemFont(ofSize: 12)
         ])
         label.textAlignment = .center
