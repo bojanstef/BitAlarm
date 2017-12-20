@@ -10,5 +10,5 @@ import Foundation
 
 protocol AddAlarmDataServiceable {
     func getCryptocoins() throws -> [Cryptocoin]
-    func saveAlarm(_ alarm: Alarm) throws 
+    func saveAlarm(_ alarm: Alarm) throws
 }

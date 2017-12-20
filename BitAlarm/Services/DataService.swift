@@ -25,7 +25,7 @@ extension DataService: DataServiceable {
     func updateCryptocoinsList() {
         let stringURL = "https://api.coinmarketcap.com/v1/ticker/?limit=120"
         guard let endpoint = URL(string: stringURL) else { print(#function); return }
-        URLSession.shared.dataTask(with: endpoint) { [weak self] data, response, error in
+        URLSession.shared.dataTask(with: endpoint) { [weak self] data, _, error in
             do {
                 guard let data = data else { throw NSError(domain: #function, code: 420, userInfo: nil) }
                 let cryptocoins = try JSONDecoder().decode([Cryptocoin].self, from: data)

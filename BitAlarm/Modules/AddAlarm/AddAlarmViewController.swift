@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate struct Constants {
+private struct Constants {
     static let cellHeight: CGFloat = 44
     private init() {}
 }

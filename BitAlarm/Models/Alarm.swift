@@ -20,7 +20,7 @@ final class Alarm: NSObject, NSCoding, Codable {
         case condition
         case value
     }
-    
+
     let isOn: Bool
     let cryptocoin: Cryptocoin
     let condition: Condition

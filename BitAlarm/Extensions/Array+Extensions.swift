@@ -9,10 +9,10 @@
 import Foundation
 
 extension Array where Element == Cryptocoin {
-    var dictionary: Dictionary<String, Cryptocoin> {
+    var dictionary: [String: Cryptocoin] {
         return reduce([:]) { result, cryptocoin in
             var dict = result
-            dict[cryptocoin.id] = cryptocoin
+            dict[cryptocoin.uid] = cryptocoin
             return dict
         }
     }

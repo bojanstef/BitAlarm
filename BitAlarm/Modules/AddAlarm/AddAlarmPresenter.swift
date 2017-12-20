@@ -39,7 +39,7 @@ extension AddAlarmPresenter: AddAlarmPresentable {
     }
 
     var bitcoin: Cryptocoin {
-        return Cryptocoin(id: "bitcoin", name: "Bitcoin", symbol: "BTC", marketCapUSD: "+inf")
+        return Cryptocoin(uid: "bitcoin", name: "Bitcoin", symbol: "BTC", marketCapUSD: "+inf")
     }
 
     func getCryptocoins() throws -> [Cryptocoin] {

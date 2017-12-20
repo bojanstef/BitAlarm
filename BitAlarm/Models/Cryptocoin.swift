@@ -10,19 +10,19 @@ import Foundation
 
 final class Cryptocoin: NSObject, NSCoding, Codable {
     enum CodingKeys: String, CodingKey {
-        case id
+        case uid = "id"
         case name
         case symbol
         case marketCapUSD = "market_cap_usd"
     }
 
-    let id: String
+    let uid: String
     let name: String
     let symbol: String
     let marketCapUSD: String
 
-    init(id: String, name: String, symbol: String, marketCapUSD: String) {
-        self.id = id
+    init(uid: String, name: String, symbol: String, marketCapUSD: String) {
+        self.uid = uid
         self.name = name
         self.symbol = symbol
         self.marketCapUSD = marketCapUSD
@@ -30,7 +30,7 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
 
     override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? Cryptocoin else { return false }
-        return id == object.id
+        return uid == object.uid
             && name == object.name
             && symbol == object.symbol
             && marketCapUSD == object.marketCapUSD
@@ -39,17 +39,17 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
     // MARK: - NSCoding Protocol Methods.
 
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let id = aDecoder.decodeObject(forKey: CodingKeys.id.stringValue) as? String,
+        guard let uid = aDecoder.decodeObject(forKey: CodingKeys.uid.stringValue) as? String,
             let name = aDecoder.decodeObject(forKey: CodingKeys.name.stringValue) as? String,
             let symbol = aDecoder.decodeObject(forKey: CodingKeys.symbol.stringValue) as? String,
             let marketCapUSD = aDecoder.decodeObject(forKey: CodingKeys.marketCapUSD.stringValue) as? String
         else { print(#function); return nil }
 
-        self.init(id: id, name: name, symbol: symbol, marketCapUSD: marketCapUSD)
+        self.init(uid: uid, name: name, symbol: symbol, marketCapUSD: marketCapUSD)
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(id, forKey: CodingKeys.id.stringValue)
+        aCoder.encode(uid, forKey: CodingKeys.uid.stringValue)
         aCoder.encode(name, forKey: CodingKeys.name.stringValue)
         aCoder.encode(symbol, forKey: CodingKeys.symbol.stringValue)
         aCoder.encode(marketCapUSD, forKey: CodingKeys.marketCapUSD.stringValue)
@@ -57,7 +57,7 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
 }
 
 extension Cryptocoin: Comparable {
-    static func <(lhs: Cryptocoin, rhs: Cryptocoin) -> Bool {
+    static func < (lhs: Cryptocoin, rhs: Cryptocoin) -> Bool {
         if let lhsMarketCapUSD = Double(lhs.marketCapUSD), let rhsMarketCapUSD = Double(rhs.marketCapUSD) {
             return lhsMarketCapUSD < rhsMarketCapUSD
         } else {
