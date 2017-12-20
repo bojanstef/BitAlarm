@@ -12,6 +12,7 @@ protocol AlarmsInteractable {
     func showAddAlarmController()
     func getAlarms() throws -> [Alarm]
     func deleteAlarm(_ alarm: Alarm) throws
+    func updateAlarm(_ alarm: Alarm, updated: Alarm) throws
 }
 
 final class AlarmsInteractor {
@@ -35,5 +36,9 @@ extension AlarmsInteractor: AlarmsInteractable {
 
     func deleteAlarm(_ alarm: Alarm) throws {
         try dataService.deleteAlarm(alarm)
+    }
+
+    func updateAlarm(_ alarm: Alarm, updated: Alarm) throws {
+        try dataService.updateAlarm(alarm, updated: updated)
     }
 }

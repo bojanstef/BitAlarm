@@ -14,29 +14,43 @@ enum Cachefilenames: String {
 }
 
 protocol CacheServiceable {
-    func saveAlarm(_ alarm: Alarm) throws
+    func saveAlarm(_ alarmToSave: Alarm) throws
     func deleteAlarm(_ alarmToRemove: Alarm) throws
+    func updateAlarm(_ alarmToUpdate: Alarm, updated: Alarm) throws
     func saveObject(_ object: Any, in filename: Cachefilenames) throws
     func getObject(_ filename: Cachefilenames) throws -> Any?
 }
 
 final class CacheService {
     static let `default` = CacheService()
-    private init() {}
+    fileprivate var alarms = [Alarm]()
+    private init() {
+        self.alarms = (try? getObject(.alarms) as? [Alarm] ?? []) ?? []
+    }
 }
 
 extension CacheService: CacheServiceable {
-    func saveAlarm(_ alarm: Alarm) throws {
-        let alarms = try getObject(.alarms) as? [Alarm] ?? []
-        try saveObject(alarms + [alarm], in: .alarms)
+    func saveAlarm(_ alarmToSave: Alarm) throws {
+        alarms.append(alarmToSave)
+        try saveObject(alarms, in: .alarms)
     }
 
     func deleteAlarm(_ alarmToRemove: Alarm) throws {
-        guard let alarms = try getObject(.alarms) as? [Alarm] else {
+        guard let index = alarms.index(of: alarmToRemove) else {
             throw NSError(domain: #function, code: 1080, userInfo: nil)
         }
-        let updatedAlarms = alarms.filter { $0 != alarmToRemove }
-        try saveObject(updatedAlarms, in: .alarms)
+
+        alarms.remove(at: index)
+        try saveObject(alarms, in: .alarms)
+    }
+
+    func updateAlarm(_ alarmToUpdate: Alarm, updated: Alarm) throws {
+        guard let index = alarms.index(of: alarmToUpdate) else {
+            throw NSError(domain: #function, code: 1080, userInfo: nil)
+        }
+
+        alarms[index] = updated
+        try saveObject(alarms, in: .alarms)
     }
 
     func saveObject(_ object: Any, in filename: Cachefilenames) throws {

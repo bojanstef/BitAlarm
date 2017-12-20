@@ -49,6 +49,10 @@ extension DataService: AlarmsDataServiceable {
     func deleteAlarm(_ alarm: Alarm) throws {
         try cacheService.deleteAlarm(alarm)
     }
+
+    func updateAlarm(_ alarm: Alarm, updated: Alarm) throws {
+        try cacheService.updateAlarm(alarm, updated: updated)
+    }
 }
 
 extension DataService: AddAlarmDataServiceable {

@@ -39,6 +39,17 @@ extension AlarmsViewController: UITableViewDelegate {
     }
 }
 
+extension AlarmsViewController: AlarmCellDelegate {
+    func switchWasFlipped(for alarm: Alarm) {
+        do {
+            let updated = Alarm(isOn: !alarm.isOn, cryptocoin: alarm.cryptocoin, parameter: alarm.parameter, price: alarm.price)
+            try presenter.updateAlarm(alarm, updated: updated)
+        } catch {
+            print(error)
+        }
+    }
+}
+
 extension AlarmsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
@@ -48,6 +59,7 @@ extension AlarmsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
             as? AlarmCell else { fatalError("AlarmCell was not dequeued") }
         cell.setup(alarms[indexPath.row])
+        cell.delegate = self
         return cell
     }
 

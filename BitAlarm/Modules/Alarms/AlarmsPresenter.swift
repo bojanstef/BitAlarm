@@ -13,6 +13,7 @@ protocol AlarmsPresentable {
     func showAddAlarmController()
     func getAlarms() throws -> [Alarm]
     func deleteAlarm(_ alarm: Alarm) throws
+    func updateAlarm(_ alarm: Alarm, updated: Alarm) throws
 }
 
 final class AlarmsPresenter {
@@ -38,5 +39,9 @@ extension AlarmsPresenter: AlarmsPresentable {
 
     func deleteAlarm(_ alarm: Alarm) throws {
         try interactor.deleteAlarm(alarm)
+    }
+
+    func updateAlarm(_ alarm: Alarm, updated: Alarm) throws {
+        try interactor.updateAlarm(alarm, updated: updated)
     }
 }
