@@ -15,7 +15,7 @@
 		F153B1CB1FE5109F00A8B295 /* AddAlarmWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1C51FE5109F00A8B295 /* AddAlarmWireframe.swift */; };
 		F153B1CE1FE51EB600A8B295 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1CC1FE51EB600A8B295 /* AlarmCell.swift */; };
 		F153B1CF1FE51EB600A8B295 /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F153B1CD1FE51EB600A8B295 /* AlarmCell.xib */; };
-		F153B1D11FE5CA0D00A8B295 /* ComparingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1D01FE5CA0D00A8B295 /* ComparingControl.swift */; };
+		F153B1D11FE5CA0D00A8B295 /* ConditionalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1D01FE5CA0D00A8B295 /* ConditionalControl.swift */; };
 		F153B1DB1FE5E5F100A8B295 /* Cryptocoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DA1FE5E5F100A8B295 /* Cryptocoin.swift */; };
 		F153B1DD1FE73E0500A8B295 /* FirstLaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */; };
 		F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */; };
@@ -47,7 +47,7 @@
 		F153B1C51FE5109F00A8B295 /* AddAlarmWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmWireframe.swift; sourceTree = "<group>"; };
 		F153B1CC1FE51EB600A8B295 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		F153B1CD1FE51EB600A8B295 /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
-		F153B1D01FE5CA0D00A8B295 /* ComparingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparingControl.swift; sourceTree = "<group>"; };
+		F153B1D01FE5CA0D00A8B295 /* ConditionalControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalControl.swift; sourceTree = "<group>"; };
 		F153B1DA1FE5E5F100A8B295 /* Cryptocoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocoin.swift; sourceTree = "<group>"; };
 		F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchService.swift; sourceTree = "<group>"; };
 		F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 			children = (
 				F153B1CC1FE51EB600A8B295 /* AlarmCell.swift */,
 				F153B1CD1FE51EB600A8B295 /* AlarmCell.xib */,
-				F153B1D01FE5CA0D00A8B295 /* ComparingControl.swift */,
+				F153B1D01FE5CA0D00A8B295 /* ConditionalControl.swift */,
 				F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */,
 				F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */,
 			);
@@ -304,7 +304,7 @@
 				F153B1CE1FE51EB600A8B295 /* AlarmCell.swift in Sources */,
 				F1A6F6351FE4726200DEA6D7 /* AlarmsViewController.swift in Sources */,
 				F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */,
-				F153B1D11FE5CA0D00A8B295 /* ComparingControl.swift in Sources */,
+				F153B1D11FE5CA0D00A8B295 /* ConditionalControl.swift in Sources */,
 				F153B1CB1FE5109F00A8B295 /* AddAlarmWireframe.swift in Sources */,
 				F1A6F61D1FE4675600DEA6D7 /* RootCoordinator.swift in Sources */,
 				F1A6F6341FE4726200DEA6D7 /* AlarmsPresenter.swift in Sources */,

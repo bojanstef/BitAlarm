@@ -15,7 +15,7 @@ fileprivate struct Constants {
 
 final class AddAlarmViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
-    @IBOutlet fileprivate weak var comparingControl: ComparingControl!
+    @IBOutlet fileprivate weak var conditionalControl: ConditionalControl!
     @IBOutlet fileprivate weak var dollarValueTextField: UITextField!
     fileprivate let presenter: AddAlarmPresentable
     fileprivate let cellIdentifier = String(describing: CryptocoinCell.self)
@@ -24,7 +24,7 @@ final class AddAlarmViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencySymbol = ""
-        formatter.minimumFractionDigits = 8
+        formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 8
         return formatter
     }()
@@ -89,9 +89,9 @@ fileprivate extension AddAlarmViewController {
     @objc func save() {
         let indexPath = tableView.indexPathForSelectedRow ?? IndexPath(row: 0, section: 0)
         let cryptocoin = (tableView.cellForRow(at: indexPath) as? CryptocoinCell)?.cryptocoin ?? presenter.bitcoin
-        let parameter = comparingControl.comparer
-        let price = currencyFormatter.number(from: dollarValueTextField.text ?? "0")?.doubleValue ?? 0
-        let alarm = Alarm(isOn: true, cryptocoin: cryptocoin, parameter: parameter, price: price)
+        let number = NSDecimalNumber(value: Double(dollarValueTextField.text ?? "0") ?? 0)
+        let value = currencyFormatter.string(from: number) ?? "0"
+        let alarm = Alarm(isOn: true, cryptocoin: cryptocoin, condition: conditionalControl.condition, value: value)
 
         do {
             try presenter.saveAlarm(alarm)
@@ -103,14 +103,6 @@ fileprivate extension AddAlarmViewController {
 
     @objc func cancel() {
         dismissKeyboardAndController()
-    }
-
-    func getParameter(from segmentIndex: Int) -> Comparing {
-        if segmentIndex == 0 {
-            return .lessThan
-        } else {
-            return .greaterThan
-        }
     }
 
     func setupNavbar() {

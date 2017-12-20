@@ -36,28 +36,20 @@ extension CacheService: CacheServiceable {
     }
 
     func deleteAlarm(_ alarmToRemove: Alarm) throws {
-        guard let index = alarms.index(of: alarmToRemove) else {
-            throw NSError(domain: #function, code: 1080, userInfo: nil)
-        }
-
+        guard let index = alarms.index(of: alarmToRemove) else { throw NSError(domain: #function, code: 1080, userInfo: nil) }
         alarms.remove(at: index)
         try saveObject(alarms, in: .alarms)
     }
 
     func updateAlarm(_ alarmToUpdate: Alarm, updated: Alarm) throws {
-        guard let index = alarms.index(of: alarmToUpdate) else {
-            throw NSError(domain: #function, code: 1080, userInfo: nil)
-        }
-
+        guard let index = alarms.index(of: alarmToUpdate) else { throw NSError(domain: #function, code: 420, userInfo: nil) }
         alarms[index] = updated
         try saveObject(alarms, in: .alarms)
     }
 
     func saveObject(_ object: Any, in filename: Cachefilenames) throws {
         let file = try getFile(filename).path
-        if !NSKeyedArchiver.archiveRootObject(object, toFile: file) {
-            throw NSError(domain: #function, code: 360, userInfo: nil)
-        }
+        if !NSKeyedArchiver.archiveRootObject(object, toFile: file) { throw NSError(domain: #function, code: 360, userInfo: nil) }
     }
     
     func getObject(_ filename: Cachefilenames) throws -> Any? {

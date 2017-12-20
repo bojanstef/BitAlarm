@@ -37,16 +37,16 @@ extension AlarmsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.cellHeight
     }
-}
 
-extension AlarmsViewController: AlarmCellDelegate {
-    func switchWasFlipped(for alarm: Alarm) {
-        do {
-            let updated = Alarm(isOn: !alarm.isOn, cryptocoin: alarm.cryptocoin, parameter: alarm.parameter, price: alarm.price)
-            try presenter.updateAlarm(alarm, updated: updated)
-        } catch {
-            print(error)
-        }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 20)
+        let label = UILabel(frame: frame)
+        label.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        label.attributedText = NSAttributedString(string: "Learn about Bitcoin at readCryptoNews.com", attributes: [
+            .font: UIFont.systemFont(ofSize: 12),
+        ])
+        label.textAlignment = .center
+        return label
     }
 }
 
@@ -74,8 +74,19 @@ extension AlarmsViewController: UITableViewDataSource {
                 alarms.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             } catch {
-                print(error)
+                print(#function, error)
             }
+        }
+    }
+}
+
+extension AlarmsViewController: AlarmCellDelegate {
+    func switchWasFlipped(for alarm: Alarm) {
+        do {
+            let updated = Alarm(isOn: !alarm.isOn, cryptocoin: alarm.cryptocoin, condition: alarm.condition, value: alarm.value)
+            try presenter.updateAlarm(alarm, updated: updated)
+        } catch {
+            print(#function, error)
         }
     }
 }

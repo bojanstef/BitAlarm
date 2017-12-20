@@ -1,5 +1,5 @@
 //
-//  ComparingControl.swift
+//  ConditionalControl.swift
 //  BitAlarm
 //
 //  Created by Bojan Stefanovic on 12/16/17.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-final class ComparingControl: UISegmentedControl {
-    var comparer: Comparing {
+final class ConditionalControl: UISegmentedControl {
+    var condition: Condition {
         if selectedSegmentIndex == 0 {
             return .lessThan
         } else {

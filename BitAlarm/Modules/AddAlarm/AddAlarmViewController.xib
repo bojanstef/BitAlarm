@@ -10,9 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAlarmViewController" customModule="CryptoAlarm" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAlarmViewController" customModule="BitAlarm" customModuleProvider="target">
             <connections>
-                <outlet property="comparingControl" destination="P34-gI-NBQ" id="KUT-N5-Z1Y"/>
+                <outlet property="conditionalControl" destination="P34-gI-NBQ" id="wdu-rs-Oac"/>
                 <outlet property="dollarValueTextField" destination="iXT-Qr-FHn" id="oJs-RJ-Q9L"/>
                 <outlet property="tableView" destination="KjL-ps-qWR" id="eku-qK-SLI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P34-gI-NBQ" customClass="ComparingControl" customModule="CryptoAlarm" customModuleProvider="target">
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P34-gI-NBQ" customClass="ConditionalControl" customModule="BitAlarm" customModuleProvider="target">
                     <rect key="frame" x="93" y="292" width="189" height="29"/>
                     <segments>
                         <segment title="Less Than"/>

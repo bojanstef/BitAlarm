@@ -42,9 +42,10 @@ extension AlarmCell: AlarmCellSetupable {
             .font: UIFont.boldSystemFont(ofSize: 48)
         ])
 
-        let text = "\(alarm.cryptocoin.name) \(alarm.parameter.rawValue) $\(alarm.price) USD"
+        
+        let text = "When \(alarm.cryptocoin.name) is \(alarm.condition.rawValue) $\(alarm.value) USD"
         descriptionLabel.attributedText = NSAttributedString(string: text, attributes: [
-            .font: UIFont.systemFont(ofSize: 14),
+            .font: UIFont.systemFont(ofSize: 12),
             .foregroundColor: UIColor.lightGray,
         ])
     }
