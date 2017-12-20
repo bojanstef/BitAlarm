@@ -19,15 +19,8 @@ final class AddAlarmViewController: UIViewController {
     @IBOutlet fileprivate weak var dollarValueTextField: UITextField!
     fileprivate let presenter: AddAlarmPresentable
     fileprivate let cellIdentifier = String(describing: CryptocoinCell.self)
+    fileprivate let currencyFormatter = CurrencyFormatter()
     fileprivate var cryptocoins = [Cryptocoin]()
-    fileprivate lazy var currencyFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = ""
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 8
-        return formatter
-    }()
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     init(presenter: AddAlarmPresentable) {
@@ -80,8 +73,7 @@ extension AddAlarmViewController: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let number = Double(textField.text ?? "0") ?? 0
-        textField.text = currencyFormatter.string(from: NSDecimalNumber(value: number))
+        textField.text = currencyFormatter.formattedText(from: dollarValueTextField.text ?? "0")
     }
 }
 
@@ -89,8 +81,7 @@ fileprivate extension AddAlarmViewController {
     @objc func save() {
         let indexPath = tableView.indexPathForSelectedRow ?? IndexPath(row: 0, section: 0)
         let cryptocoin = (tableView.cellForRow(at: indexPath) as? CryptocoinCell)?.cryptocoin ?? presenter.bitcoin
-        let number = NSDecimalNumber(value: Double(dollarValueTextField.text ?? "0") ?? 0)
-        let value = currencyFormatter.string(from: number) ?? "0"
+        let value = currencyFormatter.formattedText(from: dollarValueTextField.text ?? "0")
         let alarm = Alarm(isOn: true, cryptocoin: cryptocoin, condition: conditionalControl.condition, value: value)
 
         do {

@@ -20,6 +20,7 @@
 		F153B1DD1FE73E0500A8B295 /* FirstLaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */; };
 		F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */; };
 		F153B1E21FE747BD00A8B295 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1E11FE747BD00A8B295 /* CacheService.swift */; };
+		F15A1BC21FEA0D9700573F32 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */; };
 		F1605EBC1FE8356E00F411DD /* CryptocoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */; };
 		F1605EBD1FE8356E00F411DD /* CryptocoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */; };
 		F17801DA1FE228BB00DE8BAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17801D91FE228BB00DE8BAB /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchService.swift; sourceTree = "<group>"; };
 		F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		F153B1E11FE747BD00A8B295 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinCell.swift; sourceTree = "<group>"; };
 		F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptocoinCell.xib; sourceTree = "<group>"; };
 		F17801D61FE228BB00DE8BAB /* BitAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +193,7 @@
 				F153B1E11FE747BD00A8B295 /* CacheService.swift */,
 				F1A6F6391FE4729200DEA6D7 /* DataService.swift */,
 				F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */,
+				F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				F1A6F6351FE4726200DEA6D7 /* AlarmsViewController.swift in Sources */,
 				F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */,
 				F153B1D11FE5CA0D00A8B295 /* ConditionalControl.swift in Sources */,
+				F15A1BC21FEA0D9700573F32 /* CurrencyFormatter.swift in Sources */,
 				F153B1CB1FE5109F00A8B295 /* AddAlarmWireframe.swift in Sources */,
 				F1A6F61D1FE4675600DEA6D7 /* RootCoordinator.swift in Sources */,
 				F1A6F6341FE4726200DEA6D7 /* AlarmsPresenter.swift in Sources */,

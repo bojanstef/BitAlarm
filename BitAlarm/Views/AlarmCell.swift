@@ -21,8 +21,8 @@ final class AlarmCell: UITableViewCell {
     @IBOutlet fileprivate weak var symbolLabel: UILabel!
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
     fileprivate var alarm: Alarm?
-    weak var delegate: AlarmCellDelegate?
     override var reuseIdentifier: String? { return String(describing: AlarmCell.self) }
+    weak var delegate: AlarmCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,7 +42,6 @@ extension AlarmCell: AlarmCellSetupable {
             .font: UIFont.boldSystemFont(ofSize: 48)
         ])
 
-        
         let text = "When \(alarm.cryptocoin.name) is \(alarm.condition.rawValue) $\(alarm.value) USD"
         descriptionLabel.attributedText = NSAttributedString(string: text, attributes: [
             .font: UIFont.systemFont(ofSize: 12),
