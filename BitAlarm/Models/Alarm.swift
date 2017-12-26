@@ -41,6 +41,20 @@ final class Alarm: NSObject, NSCoding, Codable {
             && value == object.value
     }
 
+    func shouldActivate(given cryptocoin: Cryptocoin) -> Bool {
+        guard let cryptocoinValue = Double(cryptocoin.value),
+            let alarmValue = CurrencyFormatter().number(from: value)?.doubleValue else {
+                return false
+        }
+
+        if ((condition == .lessThan) && (cryptocoinValue < alarmValue)) ||
+            ((condition == .greaterThan) && (cryptocoinValue > alarmValue)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     // MARK: - NSCoding Protocol Methods.
 
     required convenience init?(coder aDecoder: NSCoder) {
