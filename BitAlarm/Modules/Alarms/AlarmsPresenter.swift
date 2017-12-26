@@ -6,12 +6,13 @@
 //  Copyright © 2017 Stefanovic Ventures. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol AlarmsPresentable {
     var navbarTitle: String { get }
-    var dataDescription: String { get }
+    var headerButtonTitle: NSAttributedString { get }
     func showAddAlarmController()
+    func showDowntimeScheduleController()
     func getAlarms() throws -> [Alarm]
     func deleteAlarm(_ alarm: Alarm) throws
     func updateAlarm(_ alarm: Alarm, updated: Alarm) throws
@@ -30,12 +31,19 @@ extension AlarmsPresenter: AlarmsPresentable {
         return (Bundle.main.object(forInfoDictionaryKey: String(kCFBundleNameKey)) as? String) ?? "BitAlarm"
     }
 
-    var dataDescription: String {
-        return "All data is from coinmarketcap.com"
+    var headerButtonTitle: NSAttributedString {
+        let string = "Activated alarms have no downtime."
+        return NSAttributedString(string: string, attributes: [
+            .font: UIFont.systemFont(ofSize: 12)
+        ])
     }
 
     func showAddAlarmController() {
         interactor.showAddAlarmController()
+    }
+
+    func showDowntimeScheduleController() {
+        interactor.showDowntimeScheduleController()
     }
 
     func getAlarms() throws -> [Alarm] {

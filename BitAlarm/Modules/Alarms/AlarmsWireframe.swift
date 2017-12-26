@@ -10,6 +10,7 @@ import UIKit
 
 protocol AlarmsModuleDelegate: class {
     func showAddAlarmController()
+    func showDowntimeScheduleController()
 }
 
 final class AlarmsWireframe {

@@ -40,13 +40,12 @@ extension AlarmsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 20)
-        let label = UILabel(frame: frame)
-        label.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-        label.attributedText = NSAttributedString(string: presenter.dataDescription, attributes: [
-            .font: UIFont.systemFont(ofSize: 12)
-        ])
-        label.textAlignment = .center
-        return label
+        let button = UIButton(frame: frame)
+        button.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
+        button.setAttributedTitle(presenter.headerButtonTitle, for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: .setupDowntime, for: .touchUpInside)
+        return button
     }
 }
 
@@ -100,6 +99,10 @@ fileprivate extension AlarmsViewController {
         presenter.showAddAlarmController()
     }
 
+    @objc func setupDowntime() {
+        presenter.showDowntimeScheduleController()
+    }
+
     func setupNavbar() {
         navigationItem.title = presenter.navbarTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: .addAlarm)
@@ -123,4 +126,5 @@ fileprivate extension AlarmsViewController {
 
 fileprivate extension Selector {
     static let addAlarm = #selector(AlarmsViewController.addAlarm)
+    static let setupDowntime = #selector(AlarmsViewController.setupDowntime)
 }
