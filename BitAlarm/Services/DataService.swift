@@ -10,6 +10,7 @@ import Foundation
 
 protocol DataServiceable {
     func updateCryptocoinsList()
+    func updateCryptocoin(_ cryptocoin: Cryptocoin, completion: @escaping ((Cryptocoin?) -> Void))
 }
 
 final class DataService {
@@ -25,13 +26,30 @@ extension DataService: DataServiceable {
     func updateCryptocoinsList() {
         let stringURL = "https://api.coinmarketcap.com/v1/ticker/?limit=120"
         guard let endpoint = URL(string: stringURL) else { print(#function); return }
-        URLSession.shared.dataTask(with: endpoint) { [weak self] data, _, error in
+        DispatchQueue.main.async {
+            URLSession.shared.dataTask(with: endpoint) { [weak self] data, _, error in
+                do {
+                    guard let data = data else { throw NSError(domain: #function, code: 420, userInfo: nil) }
+                    let cryptocoins = try JSONDecoder().decode([Cryptocoin].self, from: data)
+                    try self?.cacheService.saveObject(cryptocoins, in: .cryptocoins)
+                } catch {
+                    print(#function, error)
+                }
+            }.resume()
+        }
+    }
+
+    func updateCryptocoin(_ cryptocoin: Cryptocoin, completion: @escaping ((Cryptocoin?) -> Void)) {
+        let stringURL = "https://api.coinmarketcap.com/v1/ticker/\(cryptocoin.uid)/"
+        guard let endpoint = URL(string: stringURL) else { print(#function); completion(nil); return }
+        URLSession.shared.dataTask(with: endpoint) { data, _, error in
             do {
-                guard let data = data else { throw NSError(domain: #function, code: 420, userInfo: nil) }
+                guard let data = data else { throw NSError(domain: #function, code: 17, userInfo: nil) }
                 let cryptocoins = try JSONDecoder().decode([Cryptocoin].self, from: data)
-                try self?.cacheService.saveObject(cryptocoins, in: .cryptocoins)
+                completion(cryptocoins.first)
             } catch {
-                print(error)
+                completion(nil)
+                print(#function, error)
             }
         }.resume()
     }
