@@ -22,6 +22,7 @@
 		F153B1E21FE747BD00A8B295 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1E11FE747BD00A8B295 /* CacheService.swift */; };
 		F15A1BC21FEA0D9700573F32 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */; };
 		F15D67B21FF43C5800D45D8C /* Notification7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F15D67B11FF43C4A00D45D8C /* Notification7.m4a */; };
+		F15D67B41FF4491A00D45D8C /* Notification8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F15D67B31FF4491300D45D8C /* Notification8.m4a */; };
 		F1605EBC1FE8356E00F411DD /* CryptocoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */; };
 		F1605EBD1FE8356E00F411DD /* CryptocoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */; };
 		F17738AB1FF0BC38009DF600 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17738AA1FF0BC38009DF600 /* NotificationService.swift */; };
@@ -57,6 +58,7 @@
 		F153B1E11FE747BD00A8B295 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		F15D67B11FF43C4A00D45D8C /* Notification7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notification7.m4a; sourceTree = "<group>"; };
+		F15D67B31FF4491300D45D8C /* Notification8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notification8.m4a; sourceTree = "<group>"; };
 		F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinCell.swift; sourceTree = "<group>"; };
 		F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptocoinCell.xib; sourceTree = "<group>"; };
 		F17738AA1FF0BC38009DF600 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				F15D67B11FF43C4A00D45D8C /* Notification7.m4a */,
+				F15D67B31FF4491300D45D8C /* Notification8.m4a */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F15D67B41FF4491A00D45D8C /* Notification8.m4a in Resources */,
 				F15D67B21FF43C5800D45D8C /* Notification7.m4a in Resources */,
 				F153B1CA1FE5109F00A8B295 /* AddAlarmViewController.xib in Resources */,
 				F1A6F6361FE4726200DEA6D7 /* AlarmsViewController.xib in Resources */,
