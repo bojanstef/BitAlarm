@@ -15,21 +15,29 @@ protocol NotificationServiceable {
 
 private struct Constants {
     static let title = "Time to buy or sell!"
+    static let stopActionTitle = "Stop"
     static let identifier = "ventures.stefanovic.BitAlarm.NotificationRequestIdentifier"
-    static let contentIdentifier = "ventures.stefanovic.BitAlarm.NotificationContentIdentifier"
-    static let notificationSound = UNNotificationSound(named: "Notification7.m4a")
+    static let stopActionIdentifier = "ventures.stefanovic.BitAlarm.NotificationStopActionIdentifer"
+    static let categoryIdentifier = "ventures.stefanovic.BitAlarm.NotificationCategoryIdentifer"
+    static let authorizationOptions: UNAuthorizationOptions = [.alert, .sound]
+    static let notificationPresentationOptions: UNNotificationPresentationOptions = [.alert, .sound]
+    static let notificationSound = UNNotificationSound(named: "Notification8.m4a")
     static let minRepeatInterval: TimeInterval = 60
     private init() {}
 }
 
-final class NotificationService {
+final class NotificationService: NSObject {
     static let `default` = NotificationService()
-    private init() {}
+
+    private override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+    }
 }
 
 extension NotificationService: NotificationServiceable {
     func requestAuthorization(_ completionHandler: @escaping ((Bool, Error?) -> Void)) {
-        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
+        let options: UNAuthorizationOptions = Constants.authorizationOptions
         UNUserNotificationCenter.current().requestAuthorization(options: options, completionHandler: completionHandler)
     }
 
@@ -37,19 +45,57 @@ extension NotificationService: NotificationServiceable {
         let content = UNMutableNotificationContent()
         content.title = Constants.title
         content.body = getNotificationBody(from: alarms)
-        content.categoryIdentifier = Constants.contentIdentifier + UUID().uuidString
         content.sound = Constants.notificationSound
+        content.categoryIdentifier = Constants.categoryIdentifier
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Constants.minRepeatInterval, repeats: true)
-        let identifier = Constants.identifier + UUID().uuidString
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        let stopAction = UNNotificationAction(identifier: Constants.stopActionIdentifier,
+                                              title: Constants.stopActionTitle, options: [.destructive])
+        let category = UNNotificationCategory(identifier: Constants.categoryIdentifier,
+                                              actions: [stopAction], intentIdentifiers: [], options: [])
+        let request = UNNotificationRequest(identifier: Constants.identifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         UNUserNotificationCenter.current().add(request, withCompletionHandler: completion)
+    }
+}
+
+extension NotificationService: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        stopNotifications()
+        completionHandler(Constants.notificationPresentationOptions)
+    }
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        stopNotifications()
+        completionHandler()
+    }
+
+    private func stopNotifications() {
+        let identifier = [Constants.identifier]
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifier)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifier)
     }
 }
 
 fileprivate extension NotificationService {
     func getNotificationBody(from alarms: [Alarm]) -> String {
-        return alarms.reduce("") { accum, alarm in
-            accum.appending("\(alarm.cryptocoin.name) is \(alarm.condition.rawValue) $\(alarm.value) USD\n")
+        return alarms.enumerated().reduce("") { accum, alarm in
+            let coinName = alarm.element.cryptocoin.name
+            let condition = alarm.element.condition.rawValue
+            let value = alarm.element.value
+            let message = accum.appending("\(coinName) is \(condition) $\(value) USD")
+            if alarm.offset == alarms.count - 1 {
+                return message
+            } else {
+                return message.appending("\n")
+            }
         }
     }
 }
