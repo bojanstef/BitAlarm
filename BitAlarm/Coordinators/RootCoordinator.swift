@@ -31,6 +31,10 @@ extension RootCoordinator: AlarmsModuleDelegate {
         let controller = AddAlarmWireframe(moduleDelegate: self).controller
         rootNavigationController.present(controller, animated: true, completion: nil)
     }
+
+    func showDowntimeScheduleController() {
+        print(#file, #function)
+    }
 }
 
 extension RootCoordinator: AddAlarmModuleDelegate {}

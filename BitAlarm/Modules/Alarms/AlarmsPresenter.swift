@@ -10,7 +10,9 @@ import Foundation
 
 protocol AlarmsPresentable {
     var navbarTitle: String { get }
+    var headerButtonTitle: String { get }
     func showAddAlarmController()
+    func showDowntimeScheduleController()
     func getAlarms() throws -> [Alarm]
     func deleteAlarm(_ alarm: Alarm) throws
     func updateAlarm(_ alarm: Alarm, updated: Alarm) throws
@@ -29,8 +31,16 @@ extension AlarmsPresenter: AlarmsPresentable {
         return (Bundle.main.object(forInfoDictionaryKey: String(kCFBundleNameKey)) as? String) ?? "BitAlarm"
     }
 
+    var headerButtonTitle: String {
+        return "Activated alarms have no downtime"
+    }
+
     func showAddAlarmController() {
         interactor.showAddAlarmController()
+    }
+
+    func showDowntimeScheduleController() {
+        interactor.showDowntimeScheduleController()
     }
 
     func getAlarms() throws -> [Alarm] {
