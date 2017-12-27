@@ -39,11 +39,13 @@ extension AlarmsViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 20)
-        let button = UIButton(frame: frame)
+        let frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 22)
+        let button = UIButton(type: .system)
+        button.frame = frame
         button.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-        button.setAttributedTitle(presenter.headerButtonTitle, for: .normal)
+        button.setTitle(presenter.headerButtonTitle, for: .normal)
         button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.addTarget(self, action: .setupDowntime, for: .touchUpInside)
         return button
     }

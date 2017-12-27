@@ -6,11 +6,11 @@
 //  Copyright © 2017 Stefanovic Ventures. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol AlarmsPresentable {
     var navbarTitle: String { get }
-    var headerButtonTitle: NSAttributedString { get }
+    var headerButtonTitle: String { get }
     func showAddAlarmController()
     func showDowntimeScheduleController()
     func getAlarms() throws -> [Alarm]
@@ -31,11 +31,8 @@ extension AlarmsPresenter: AlarmsPresentable {
         return (Bundle.main.object(forInfoDictionaryKey: String(kCFBundleNameKey)) as? String) ?? "BitAlarm"
     }
 
-    var headerButtonTitle: NSAttributedString {
-        let string = "Activated alarms have no downtime."
-        return NSAttributedString(string: string, attributes: [
-            .font: UIFont.systemFont(ofSize: 12)
-        ])
+    var headerButtonTitle: String {
+        return "Activated alarms have no downtime"
     }
 
     func showAddAlarmController() {
