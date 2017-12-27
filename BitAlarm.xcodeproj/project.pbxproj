@@ -21,9 +21,9 @@
 		F153B1E01FE745C400A8B295 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */; };
 		F153B1E21FE747BD00A8B295 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1E11FE747BD00A8B295 /* CacheService.swift */; };
 		F15A1BC21FEA0D9700573F32 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */; };
+		F15D67B21FF43C5800D45D8C /* Notification7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F15D67B11FF43C4A00D45D8C /* Notification7.m4a */; };
 		F1605EBC1FE8356E00F411DD /* CryptocoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */; };
 		F1605EBD1FE8356E00F411DD /* CryptocoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */; };
-		F17738A71FF0AA51009DF600 /* Notification7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F17738A61FEFA42A009DF600 /* Notification7.m4a */; };
 		F17738AB1FF0BC38009DF600 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17738AA1FF0BC38009DF600 /* NotificationService.swift */; };
 		F17801DA1FE228BB00DE8BAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17801D91FE228BB00DE8BAB /* AppDelegate.swift */; };
 		F17801E11FE228BB00DE8BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17801E01FE228BB00DE8BAB /* Assets.xcassets */; };
@@ -56,9 +56,9 @@
 		F153B1DF1FE745C400A8B295 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		F153B1E11FE747BD00A8B295 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		F15D67B11FF43C4A00D45D8C /* Notification7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notification7.m4a; sourceTree = "<group>"; };
 		F1605EBA1FE8356E00F411DD /* CryptocoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinCell.swift; sourceTree = "<group>"; };
 		F1605EBB1FE8356E00F411DD /* CryptocoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptocoinCell.xib; sourceTree = "<group>"; };
-		F17738A61FEFA42A009DF600 /* Notification7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notification7.m4a; sourceTree = "<group>"; };
 		F17738AA1FF0BC38009DF600 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F17801D61FE228BB00DE8BAB /* BitAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17801D91FE228BB00DE8BAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		F17738A51FEFA0A5009DF600 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				F17738A61FEFA42A009DF600 /* Notification7.m4a */,
+				F15D67B11FF43C4A00D45D8C /* Notification7.m4a */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F17738A71FF0AA51009DF600 /* Notification7.m4a in Resources */,
+				F15D67B21FF43C5800D45D8C /* Notification7.m4a in Resources */,
 				F153B1CA1FE5109F00A8B295 /* AddAlarmViewController.xib in Resources */,
 				F1A6F6361FE4726200DEA6D7 /* AlarmsViewController.xib in Resources */,
 				F1A6F6271FE4716000DEA6D7 /* Main.storyboard in Resources */,
