@@ -61,7 +61,7 @@ extension DataService: DataServiceable {
     }
 
     func saveDeviceToken(_ deviceToken: Data, completion: @escaping ((Error?) -> Void)) {
-        let stringURL = "http://mbp.local:5000/device_token" // "https://bitalarm.herokuapp.com/device_token"
+        let stringURL = "https://bitalarm.herokuapp.com/device_token" // "http://mbp.local:5000/device_token"
         guard let endpoint = URL(string: stringURL) else { completion(BackendError.endpoint); return }
         let deviceToken = DeviceToken(tokenData: deviceToken)
         do {
