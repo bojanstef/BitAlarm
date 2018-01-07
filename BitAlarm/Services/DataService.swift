@@ -8,9 +8,15 @@
 
 import Foundation
 
+enum BackendError: Error {
+    case endpoint
+    case noData
+}
+
 protocol DataServiceable {
     func updateCryptocoinsList()
     func updateCryptocoin(_ cryptocoin: Cryptocoin, completion: @escaping ((Cryptocoin?) -> Void))
+    func saveDeviceToken(_ deviceToken: Data, completion: @escaping ((Error?) -> Void))
 }
 
 final class DataService {
@@ -53,6 +59,21 @@ extension DataService: DataServiceable {
             }
         }.resume()
     }
+
+    func saveDeviceToken(_ deviceToken: Data, completion: @escaping ((Error?) -> Void)) {
+        let stringURL = "http://mbp.local:5000/device_token" // "https://bitalarm.herokuapp.com/device_token"
+        guard let endpoint = URL(string: stringURL) else { completion(BackendError.endpoint); return }
+        let deviceToken = DeviceToken(tokenData: deviceToken)
+        do {
+            let json = try JSONEncoder().encode(deviceToken)
+            let request = generatePostRequest(at: endpoint, json: json)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                completion(error)
+            }.resume()
+        } catch {
+            completion(error)
+        }
+    }
 }
 
 extension DataService: AlarmsDataServiceable {
@@ -84,5 +105,16 @@ extension DataService: AddAlarmDataServiceable {
 
     func saveAlarm(_ alarm: Alarm) throws {
         try cacheService.saveAlarm(alarm)
+    }
+}
+
+fileprivate extension DataService {
+    func generatePostRequest(at endpoint: URL, json: Data) -> URLRequest {
+        var request = URLRequest(url: endpoint)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = json
+        return request
     }
 }
