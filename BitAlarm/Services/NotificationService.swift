@@ -22,7 +22,7 @@ private struct Constants {
     static let authorizationOptions: UNAuthorizationOptions = [.alert, .sound]
     static let notificationPresentationOptions: UNNotificationPresentationOptions = [.alert, .sound]
     static let notificationSound = UNNotificationSound(named: "Notification8.m4a")
-    static let minRepeatInterval: TimeInterval = 60
+    static let minRepeatInterval: TimeInterval = 1
     private init() {}
 }
 
@@ -47,7 +47,8 @@ extension NotificationService: NotificationServiceable {
         content.body = getNotificationBody(from: alarms)
         content.sound = Constants.notificationSound
         content.categoryIdentifier = Constants.categoryIdentifier
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Constants.minRepeatInterval, repeats: true)
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Constants.minRepeatInterval, repeats: false)
         let stopAction = UNNotificationAction(identifier: Constants.stopActionIdentifier,
                                               title: Constants.stopActionTitle, options: [.destructive])
         let category = UNNotificationCategory(identifier: Constants.categoryIdentifier,
