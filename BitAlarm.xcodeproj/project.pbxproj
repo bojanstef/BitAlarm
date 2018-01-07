@@ -46,13 +46,6 @@
 
 /* Begin PBXFileReference section */
 		F117046C1FF4756F009E6E98 /* BitAlarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitAlarm.entitlements; sourceTree = "<group>"; };
-		F11704701FF6C742009E6E98 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = ../../../Desktop/Firebase/Analytics/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
-		F11704711FF6C742009E6E98 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = ../../../Desktop/Firebase/Analytics/nanopb.framework; sourceTree = "<group>"; };
-		F11704721FF6C742009E6E98 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = ../../../Desktop/Firebase/Analytics/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
-		F11704731FF6C742009E6E98 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = ../../../Desktop/Firebase/Analytics/FirebaseNanoPB.framework; sourceTree = "<group>"; };
-		F11704741FF6C742009E6E98 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = ../../../Desktop/Firebase/Analytics/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		F11704751FF6C742009E6E98 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = ../../../Desktop/Firebase/Analytics/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		F11704761FF6C742009E6E98 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = ../../../Desktop/Firebase/Analytics/FirebaseCore.framework; sourceTree = "<group>"; };
 		F11708CE1FFDF1D4009E6E98 /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		F11708D11FFDF64A009E6E98 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		F153B1C01FE5109F00A8B295 /* AddAlarmDataServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmDataServiceable.swift; sourceTree = "<group>"; };
@@ -106,13 +99,6 @@
 		F117046F1FF6C742009E6E98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F11704751FF6C742009E6E98 /* FirebaseAnalytics.framework */,
-				F11704761FF6C742009E6E98 /* FirebaseCore.framework */,
-				F11704701FF6C742009E6E98 /* FirebaseCoreDiagnostics.framework */,
-				F11704741FF6C742009E6E98 /* FirebaseInstanceID.framework */,
-				F11704731FF6C742009E6E98 /* FirebaseNanoPB.framework */,
-				F11704721FF6C742009E6E98 /* GoogleToolboxForMac.framework */,
-				F11704711FF6C742009E6E98 /* nanopb.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
