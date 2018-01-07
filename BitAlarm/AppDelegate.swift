@@ -29,7 +29,8 @@ extension AppDelegate: UIApplicationDelegate {
         rootCoordinator = RootCoordinator(window: window)
         rootCoordinator?.start()
         NotificationService.default.requestAuthorization(notificationRequestCompletion)
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        application.registerForRemoteNotifications()
         return true
     }
 
@@ -37,10 +38,35 @@ extension AppDelegate: UIApplicationDelegate {
         getCryptocoins()
     }
 
-    func application(_ application: UIApplication, performFetchWithCompletionHandler
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        pingAlarms(completionHandler)
+    }
+
+    func application(
+        _ application: UIApplication,
+        performFetchWithCompletionHandler
         completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // TODO: - Setup Scheduling (i.e. only run this if the time is within the "active" zone.)
         pingAlarms(completionHandler)
+    }
+
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+        DataService.default.saveDeviceToken(deviceToken) { error in
+            print("error:", error as Any)
+        }
+    }
+
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // TODO: - Show error, in settings view?
+        print(#function, "error:", error)
     }
 }
 

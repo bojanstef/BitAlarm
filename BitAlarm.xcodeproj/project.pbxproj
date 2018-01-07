@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11708CF1FFDF1D4009E6E98 /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11708CE1FFDF1D4009E6E98 /* DeviceToken.swift */; };
+		F11708D21FFDF64A009E6E98 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11708D11FFDF64A009E6E98 /* TimeFormatter.swift */; };
 		F153B1C61FE5109F00A8B295 /* AddAlarmDataServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1C01FE5109F00A8B295 /* AddAlarmDataServiceable.swift */; };
 		F153B1C71FE5109F00A8B295 /* AddAlarmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1C11FE5109F00A8B295 /* AddAlarmInteractor.swift */; };
 		F153B1C81FE5109F00A8B295 /* AddAlarmPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F153B1C21FE5109F00A8B295 /* AddAlarmPresenter.swift */; };
@@ -43,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F117046C1FF4756F009E6E98 /* BitAlarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitAlarm.entitlements; sourceTree = "<group>"; };
+		F11708CE1FFDF1D4009E6E98 /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
+		F11708D11FFDF64A009E6E98 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		F153B1C01FE5109F00A8B295 /* AddAlarmDataServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmDataServiceable.swift; sourceTree = "<group>"; };
 		F153B1C11FE5109F00A8B295 /* AddAlarmInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmInteractor.swift; sourceTree = "<group>"; };
 		F153B1C21FE5109F00A8B295 /* AddAlarmPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmPresenter.swift; sourceTree = "<group>"; };
@@ -91,6 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F117046F1FF6C742009E6E98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F11708D01FFDF620009E6E98 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */,
+				F11708D11FFDF64A009E6E98 /* TimeFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
 		F153B1BF1FE5107C00A8B295 /* AddAlarm */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +147,7 @@
 			children = (
 				F17801D81FE228BB00DE8BAB /* BitAlarm */,
 				F17801D71FE228BB00DE8BAB /* Products */,
+				F117046F1FF6C742009E6E98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,10 +164,12 @@
 			children = (
 				F17801D91FE228BB00DE8BAB /* AppDelegate.swift */,
 				F17801E01FE228BB00DE8BAB /* Assets.xcassets */,
+				F117046C1FF4756F009E6E98 /* BitAlarm.entitlements */,
 				F17801E51FE228BB00DE8BAB /* Info.plist */,
 				F1A6F6211FE4715100DEA6D7 /* Base.lproj */,
 				F1A6F61A1FE4672000DEA6D7 /* Coordinators */,
 				F153B1DE1FE745AB00A8B295 /* Extensions */,
+				F11708D01FFDF620009E6E98 /* Formatters */,
 				F1A6F6401FE4812900DEA6D7 /* Models */,
 				F1A6F6281FE471C600DEA6D7 /* Modules */,
 				F1A6F61E1FE4676500DEA6D7 /* Protocols */,
@@ -207,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				F153B1E11FE747BD00A8B295 /* CacheService.swift */,
-				F15A1BC11FEA0D9700573F32 /* CurrencyFormatter.swift */,
 				F1A6F6391FE4729200DEA6D7 /* DataService.swift */,
 				F153B1DC1FE73E0500A8B295 /* FirstLaunchService.swift */,
 				F17738AA1FF0BC38009DF600 /* NotificationService.swift */,
@@ -232,6 +255,7 @@
 			children = (
 				F1A6F6411FE4814500DEA6D7 /* Alarm.swift */,
 				F153B1DA1FE5E5F100A8B295 /* Cryptocoin.swift */,
+				F11708CE1FFDF1D4009E6E98 /* DeviceToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +296,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -340,6 +367,7 @@
 				F1A6F6201FE4677C00DEA6D7 /* Coordinator.swift in Sources */,
 				F153B1C81FE5109F00A8B295 /* AddAlarmPresenter.swift in Sources */,
 				F1A6F6321FE4726200DEA6D7 /* AlarmsDataServiceable.swift in Sources */,
+				F11708D21FFDF64A009E6E98 /* TimeFormatter.swift in Sources */,
 				F1A6F6371FE4726200DEA6D7 /* AlarmsWireframe.swift in Sources */,
 				F1A6F6331FE4726200DEA6D7 /* AlarmsInteractor.swift in Sources */,
 				F153B1C71FE5109F00A8B295 /* AddAlarmInteractor.swift in Sources */,
@@ -359,6 +387,7 @@
 				F17801DA1FE228BB00DE8BAB /* AppDelegate.swift in Sources */,
 				F1605EBC1FE8356E00F411DD /* CryptocoinCell.swift in Sources */,
 				F153B1E21FE747BD00A8B295 /* CacheService.swift in Sources */,
+				F11708CF1FFDF1D4009E6E98 /* DeviceToken.swift in Sources */,
 				F1A6F6421FE4814500DEA6D7 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BitAlarm/BitAlarm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8JFVKN675;
 				INFOPLIST_FILE = "$(SRCROOT)/BitAlarm/Info.plist";
@@ -512,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BitAlarm/BitAlarm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8JFVKN675;
 				INFOPLIST_FILE = "$(SRCROOT)/BitAlarm/Info.plist";
