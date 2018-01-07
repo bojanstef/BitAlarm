@@ -16,8 +16,8 @@ final class TimeFormatter: DateFormatter {
         timeStyle = .long
     }
 
-    func date(from timeCreated: TimeInterval) -> Date? {
-        let date = Date(timeIntervalSince1970: timeCreated)
+    func date(from timeIntervalSince1970: TimeInterval) -> Date? {
+        let date = Date(timeIntervalSince1970: timeIntervalSince1970)
         let dateString = self.string(from: date)
         return self.date(from: dateString)
     }
