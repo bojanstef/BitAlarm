@@ -21,6 +21,8 @@ final class AddAlarmViewController: UIViewController {
     fileprivate let cellIdentifier = String(describing: CryptocoinCell.self)
     fileprivate let currencyFormatter = CurrencyFormatter()
     fileprivate var cryptocoins = [Cryptocoin]()
+    fileprivate var filteredCryptocoins = [Cryptocoin]()
+    fileprivate var isSearching = false
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     init(presenter: AddAlarmPresentable) {
@@ -54,13 +56,23 @@ extension AddAlarmViewController: UITableViewDelegate {
 
 extension AddAlarmViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cryptocoins.count
+        if isSearching {
+            return filteredCryptocoins.count
+        } else {
+            return cryptocoins.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
             as? CryptocoinCell else { fatalError("CryptocoinCell was not dequeued") }
-        cell.setup(cryptocoins[indexPath.row])
+
+        if isSearching {
+            cell.setup(filteredCryptocoins[indexPath.row])
+        } else {
+            cell.setup(cryptocoins[indexPath.row])
+        }
+
         return cell
     }
 }
@@ -74,6 +86,30 @@ extension AddAlarmViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text = currencyFormatter.formattedText(from: dollarValueTextField.text ?? "0")
+    }
+}
+
+extension AddAlarmViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = false
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredCryptocoins = cryptocoins.filter { $0.name.range(of: searchText, options: .caseInsensitive) != nil }
+        isSearching = !filteredCryptocoins.isEmpty
+        tableView.reloadData()
     }
 }
 
