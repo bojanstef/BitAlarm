@@ -17,6 +17,9 @@ private struct Constants {
 
 @UIApplicationMain
 final class AppDelegate: UIResponder {
+    fileprivate let firstLaunchService = FirstLaunchService.default
+    fileprivate let notificationService = NotificationService.default
+    fileprivate let dataService = DataService.default
     fileprivate var rootCoordinator: Coordinator?
     var window: UIWindow?
 }
@@ -25,10 +28,10 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard let window = window else { return false }
-        FirstLaunchService.default.isFirstLaunch { getCryptocoins() }
+        firstLaunchService.isFirstLaunch { getCryptocoins() }
         rootCoordinator = RootCoordinator(window: window)
         rootCoordinator?.start()
-        NotificationService.default.requestAuthorization(notificationRequestCompletion)
+        notificationService.requestAuthorization(notificationRequestCompletion)
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         application.registerForRemoteNotifications()
         return true
@@ -57,7 +60,7 @@ extension AppDelegate: UIApplicationDelegate {
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
-        DataService.default.saveDeviceToken(deviceToken) { error in
+        dataService.saveDeviceToken(deviceToken) { error in
             print("error:", error as Any)
         }
     }
@@ -98,17 +101,17 @@ fileprivate extension AppDelegate {
     }
 
     func getCryptocoins() {
-        DataService.default.updateCryptocoinsList()
+        dataService.updateCryptocoinsList()
     }
 
     func pingAlarms(_ completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         do {
-            let enabledAlarms = try DataService.default.getAlarms().filter { $0.isOn }
+            let enabledAlarms = try dataService.getAlarms().filter { $0.isOn }
             let dispatchGroup = DispatchGroup()
             var alarms = [Alarm]()
             enabledAlarms.forEach { alarm in
                 dispatchGroup.enter()
-                DataService.default.updateCryptocoin(alarm.cryptocoin) { cryptocoin in
+                dataService.updateCryptocoin(alarm.cryptocoin) { cryptocoin in
                     guard let cryptocoin = cryptocoin else { dispatchGroup.leave(); return }
                     if alarm.shouldActivate(given: cryptocoin) {
                         alarms.append(alarm)
@@ -129,7 +132,7 @@ fileprivate extension AppDelegate {
     }
 
     func activate(_ alarms: [Alarm], completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        NotificationService.default.showNotification(for: alarms) { error in
+        notificationService.showNotification(for: alarms) { error in
             if let error = error {
                 completionHandler(.failed); print(#function, error)
             } else {
