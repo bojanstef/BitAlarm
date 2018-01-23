@@ -30,7 +30,7 @@ final class DataService {
 
 extension DataService: DataServiceable {
     func updateCryptocoinsList() {
-        let stringURL = "https://api.coinmarketcap.com/v1/ticker/?limit=120"
+        let stringURL = "https://api.coinmarketcap.com/v1/ticker/?limit=0"
         guard let endpoint = URL(string: stringURL) else { print(#function); return }
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: endpoint) { [weak self] data, _, error in
