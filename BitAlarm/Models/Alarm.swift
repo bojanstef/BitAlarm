@@ -42,7 +42,8 @@ final class Alarm: NSObject, NSCoding, Codable {
     }
 
     func shouldActivate(given cryptocoin: Cryptocoin) -> Bool {
-        guard let cryptocoinValue = Double(cryptocoin.value),
+        guard let cryptocoinValueString = cryptocoin.value,
+            let cryptocoinValue = Double(cryptocoinValueString),
             let alarmValue = CurrencyFormatter().number(from: value)?.doubleValue else {
                 return false
         }

@@ -24,11 +24,21 @@ extension CryptocoinCell: CryptocoinCellSetupable {
         self.cryptocoin = cryptocoin
         coinNameLabel.text = cryptocoin.name
 
-        let formattedValue = CurrencyFormatter().formattedText(from: cryptocoin.value)
-        let text = "About $\(formattedValue) USD"
+        let text = getCryptocoinValue(cryptocoin.value)
         coinValueLabel.attributedText = NSAttributedString(string: text, attributes: [
             .font: UIFont.systemFont(ofSize: 10),
             .foregroundColor: UIColor.lightGray
         ])
+    }
+}
+
+private extension CryptocoinCell {
+    func getCryptocoinValue(_ value: String?) -> String {
+        if let cryptocoinValue = value {
+            let formattedValue = CurrencyFormatter().formattedText(from: cryptocoinValue)
+            return "About $\(formattedValue) USD"
+        } else {
+            return "Not yet valued"
+        }
     }
 }

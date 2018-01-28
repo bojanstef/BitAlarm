@@ -20,10 +20,10 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
     let uid: String
     let name: String
     let symbol: String
-    let value: String
+    let value: String?
     let marketCapUSD: String?
 
-    init(uid: String, name: String, symbol: String, value: String, marketCapUSD: String?) {
+    init(uid: String, name: String, symbol: String, value: String?, marketCapUSD: String?) {
         self.uid = uid
         self.name = name
         self.symbol = symbol
@@ -45,10 +45,10 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
     required convenience init?(coder aDecoder: NSCoder) {
         guard let uid = aDecoder.decodeObject(forKey: CodingKeys.uid.stringValue) as? String,
             let name = aDecoder.decodeObject(forKey: CodingKeys.name.stringValue) as? String,
-            let symbol = aDecoder.decodeObject(forKey: CodingKeys.symbol.stringValue) as? String,
-            let value = aDecoder.decodeObject(forKey: CodingKeys.value.stringValue) as? String
+            let symbol = aDecoder.decodeObject(forKey: CodingKeys.symbol.stringValue) as? String
         else { print(#function); return nil }
 
+        let value = aDecoder.decodeObject(forKey: CodingKeys.value.stringValue) as? String
         let marketCapUSD = aDecoder.decodeObject(forKey: CodingKeys.marketCapUSD.stringValue) as? String
 
         self.init(uid: uid, name: name, symbol: symbol, value: value, marketCapUSD: marketCapUSD)
