@@ -65,13 +65,10 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
 
 extension Cryptocoin: Comparable {
     static func < (lhs: Cryptocoin, rhs: Cryptocoin) -> Bool {
-        if let rhsMarketCapUSDString = rhs.marketCapUSD,
-            let rhsMarketCapUSD = Double(rhsMarketCapUSDString),
-            let lhsMarketCapUSDString = lhs.marketCapUSD,
-            let lhsMarketCapUSD = Double(lhsMarketCapUSDString) {
-            return lhsMarketCapUSD < rhsMarketCapUSD
-        } else {
-            return lhs.name < rhs.name // alphabetical order
-        }
+        let rhsMarketCapUSDString = rhs.marketCapUSD ?? "0"
+        let rhsMarketCapUSD = Double(rhsMarketCapUSDString) ?? 0
+        let lhsMarketCapUSDString = lhs.marketCapUSD ?? "0"
+        let lhsMarketCapUSD = Double(lhsMarketCapUSDString) ?? 0
+        return lhsMarketCapUSD < rhsMarketCapUSD
     }
 }
