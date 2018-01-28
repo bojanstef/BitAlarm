@@ -21,9 +21,9 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
     let name: String
     let symbol: String
     let value: String
-    let marketCapUSD: String
+    let marketCapUSD: String?
 
-    init(uid: String, name: String, symbol: String, value: String, marketCapUSD: String) {
+    init(uid: String, name: String, symbol: String, value: String, marketCapUSD: String?) {
         self.uid = uid
         self.name = name
         self.symbol = symbol
@@ -46,9 +46,10 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
         guard let uid = aDecoder.decodeObject(forKey: CodingKeys.uid.stringValue) as? String,
             let name = aDecoder.decodeObject(forKey: CodingKeys.name.stringValue) as? String,
             let symbol = aDecoder.decodeObject(forKey: CodingKeys.symbol.stringValue) as? String,
-            let value = aDecoder.decodeObject(forKey: CodingKeys.value.stringValue) as? String,
-            let marketCapUSD = aDecoder.decodeObject(forKey: CodingKeys.marketCapUSD.stringValue) as? String
+            let value = aDecoder.decodeObject(forKey: CodingKeys.value.stringValue) as? String
         else { print(#function); return nil }
+
+        let marketCapUSD = aDecoder.decodeObject(forKey: CodingKeys.marketCapUSD.stringValue) as? String
 
         self.init(uid: uid, name: name, symbol: symbol, value: value, marketCapUSD: marketCapUSD)
     }
@@ -64,10 +65,13 @@ final class Cryptocoin: NSObject, NSCoding, Codable {
 
 extension Cryptocoin: Comparable {
     static func < (lhs: Cryptocoin, rhs: Cryptocoin) -> Bool {
-        if let lhsMarketCapUSD = Double(lhs.marketCapUSD), let rhsMarketCapUSD = Double(rhs.marketCapUSD) {
+        if let rhsMarketCapUSDString = rhs.marketCapUSD,
+            let rhsMarketCapUSD = Double(rhsMarketCapUSDString),
+            let lhsMarketCapUSDString = lhs.marketCapUSD,
+            let lhsMarketCapUSD = Double(lhsMarketCapUSDString) {
             return lhsMarketCapUSD < rhsMarketCapUSD
         } else {
-            return lhs.name < rhs.name
+            return lhs.name < rhs.name // alphabetical order
         }
     }
 }
